@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * master1.2
+ * master1.3
  */
 public class GoodsServlet extends BaseServlet {
 
@@ -51,7 +51,6 @@ public class GoodsServlet extends BaseServlet {
     }
 
     public void addGoods(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-//             req.setCharacterEncoding("UTF-8");
         WxbGood wxbGood = new WxbGood();
         String goodId = UUID.randomUUID().toString().substring(1, 9);
         wxbGood.setGoodId(goodId);
@@ -79,6 +78,7 @@ public class GoodsServlet extends BaseServlet {
             ServletFileUpload upload = new ServletFileUpload();
             upload.setSizeMax(10 * 1024 * 1024);
             FileItemIterator itr = upload.getItemIterator(req);
+            Integer i = 0;
             while (itr.hasNext()) {
                 FileItemStream item = itr.next();
                 if (item.isFormField()) {
@@ -108,16 +108,6 @@ public class GoodsServlet extends BaseServlet {
                         case "forward_link":
                             wxbGood.setForwardLink((value));
                             break;
-//                        // 判断令牌的值
-//                        case "token":
-//                            String token = (String) req.getSession().getAttribute("token");
-//
-//                            if(token == null || !token.equals(value)){
-//                                req.setAttribute("error", "表单数据不能重复提交");
-//                                req.getRequestDispatcher("brands/brandAdd.jsp").forward(req, resp);
-//                                return;
-//                            }
-//                            break;
                     }
                 } else {
                     //获得文件名,进行处理
@@ -126,24 +116,24 @@ public class GoodsServlet extends BaseServlet {
                         String filename2 = UUID.randomUUID().toString() +
                                 filename.substring(filename.lastIndexOf("."));
                         // 保存新文件名,用于存入数据库
-                        wxbGood.setGoodPic(filename2);
-                        wxbGood.setGoodPic1(filename2);
-                        wxbGood.setGoodPic2(filename2);
+                        if(i == 0){
+                            wxbGood.setGoodPic(filename2);
+                        }
+                        if(i == 1){
+                            wxbGood.setGoodPic1(filename2);
+                        }
+                        if(i == 2){
+                            wxbGood.setGoodPic2(filename2);
+                        }
                         filename = SystemConstantsUtils.UPLOAD_PATH + filename2;
                         // 创建文件输出流
                         FileOutputStream out = new FileOutputStream(filename);
                         // 读上传文件流,写入文件
                         Streams.copy(item.openStream(), out, true);
-
+                        ++i;
                     }
                 }
             }
-//            // 执行数据库插入
-//            BrandService brandDao = new BrandServiceImpl();
-//            brandDao.insertBrand(brand);
-//            // 完成操作后,删除Token
-//            req.getSession().setAttribute("token", null);
-//            selectAllBrand(req,resp);
             goodsService.saveGoods(wxbGood);
             selectGoodsByPage(req, resp);
         }
