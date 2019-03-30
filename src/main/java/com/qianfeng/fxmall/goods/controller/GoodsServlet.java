@@ -146,7 +146,6 @@ public class GoodsServlet extends BaseServlet {
 //            selectAllBrand(req,resp);
             goodsService.saveGoods(wxbGood);
             selectGoodsByPage(req, resp);
-//            resp.sendRedirect("goods.do?m=selectGoodsByPage");
         }
     }
 }
