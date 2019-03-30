@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * master
+ * master1.2
  */
 public class GoodsServlet extends BaseServlet {
 
