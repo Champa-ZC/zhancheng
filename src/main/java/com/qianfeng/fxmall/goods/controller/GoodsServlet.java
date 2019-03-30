@@ -19,6 +19,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * master
+ */
 public class GoodsServlet extends BaseServlet {
 
     private IGoodsService goodsService = new GoodsServiceImpl();
