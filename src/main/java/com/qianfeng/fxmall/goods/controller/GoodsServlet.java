@@ -8,6 +8,7 @@ import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +25,9 @@ import java.util.UUID;
  */
 public class GoodsServlet extends BaseServlet {
 
-    private IGoodsService goodsService = new GoodsServiceImpl();
-
+//    private IGoodsService goodsService = new GoodsServiceImpl();
+         final ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
+         IGoodsService goodsService = applicationContext.getBean(GoodsServiceImpl.class);
     public void selectGoodsByPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pageStr = req.getParameter("page");
         try {
@@ -130,7 +132,7 @@ public class GoodsServlet extends BaseServlet {
                         FileOutputStream out = new FileOutputStream(filename);
                         // 读上传文件流,写入文件
                         Streams.copy(item.openStream(), out, true);
-                        ++i;
+                        i++;
                     }
                 }
             }

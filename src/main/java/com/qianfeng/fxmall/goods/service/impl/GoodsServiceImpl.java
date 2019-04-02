@@ -3,15 +3,18 @@ package com.qianfeng.fxmall.goods.service.impl;
 import com.qianfeng.fxmall.commons.info.SystemConstantsUtils;
 import com.qianfeng.fxmall.goods.bean.WxbGood;
 import com.qianfeng.fxmall.goods.dao.IGoodsDAO;
-import com.qianfeng.fxmall.goods.dao.impl.GoodsDAOImpl;
 import com.qianfeng.fxmall.goods.service.IGoodsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class GoodsServiceImpl implements IGoodsService {
 
-    private IGoodsDAO goodsDAO = new GoodsDAOImpl();
-
+//    private IGoodsDAO goodsDAO = new GoodsDAOImpl();
+    @Autowired
+    private IGoodsDAO goodsDAO;
     @Override
     public List<WxbGood> queryGoodsByPage(Integer page) {
         if(page < 1){
