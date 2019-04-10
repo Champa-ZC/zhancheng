@@ -13,8 +13,8 @@ import java.io.InputStream;
 /**
  * sessionfactory的封装：做到全局唯一
  */
-@Configuration
-public class MyBatisSessionFactoryUtils {
+/*@Configuration
+public class MyBatisSessionFactoryUtils {*/
 
 //    /**
 //     * 饿汉单例
@@ -53,7 +53,7 @@ public class MyBatisSessionFactoryUtils {
 //        }
 //        return session;
 //    }
-       private static ThreadLocal<SqlSession> threadLocal = new ThreadLocal<>();
+     /*  private static ThreadLocal<SqlSession> threadLocal = new ThreadLocal<>();
 
        @Bean
        public SqlSessionFactory provideSqlSessionFactory() throws IOException {
@@ -71,5 +71,5 @@ public class MyBatisSessionFactoryUtils {
                threadLocal.set(session);
            }
            return session;
-       }
-}
+       }session
+}*/

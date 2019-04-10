@@ -1,3 +1,4 @@
+/*
 package com.qianfeng.fxmall.goods.dao.impl;
 
 import com.qianfeng.fxmall.commons.info.SystemConstantsUtils;
@@ -11,12 +12,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+*/
 /**
  * Mybatis的商品数列访问层
  *
  * 注意：
  * 异常在dao层不要捕获
- */
+ *//*
+
 @Component
 public class GoodsDAOImpl implements IGoodsDAO {
 
@@ -42,6 +45,12 @@ public class GoodsDAOImpl implements IGoodsDAO {
     }
 
     @Override
+    public WxbGood queryGoodsById(String goodId) {
+        WxbGood good = session.getMapper(GoodsMapper.class).queryGoodsById(goodId);
+        return good;
+    }
+
+    @Override
     public List<WxbGood> queryAllGoods() {
 //        GoodsMapper goodsMapper = MyBatisSessionFactoryUtils.getSession().getMapper(GoodsMapper.class);
 //        List<WxbGood> wxbGoods = goodsMapper.queryAllGoods();
@@ -50,3 +59,4 @@ public class GoodsDAOImpl implements IGoodsDAO {
         return wxbGoods;
     }
 }
+*/

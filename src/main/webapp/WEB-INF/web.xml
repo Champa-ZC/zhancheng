@@ -5,10 +5,35 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+  <!--<servlet>-->
+    <!--<servlet-name>baseServlet</servlet-name>-->
+    <!--<servlet-class>com.qianfeng.fxmall.goods.controller.BaseServlet</servlet-class>-->
+    <!--&lt;!&ndash;Tomcat容器启动的时候，初始化当前Servlet&ndash;&gt;-->
+    <!--<load-on-startup>1</load-on-startup>-->
+  <!--</servlet>-->
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring.xml</param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <listener>
+    <listener-class>com.qianfeng.fxmall.commons.listener.TomcatInitListener</listener-class>
+  </listener>
   <servlet>
     <servlet-name>goodsServlet</servlet-name>
     <servlet-class>com.qianfeng.fxmall.goods.controller.GoodsServlet</servlet-class>
   </servlet>
+
+
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>baseServlet</servlet-name>-->
+    <!--<url-pattern>/base</url-pattern>-->
+  <!--</servlet-mapping>-->
   <servlet-mapping>
     <servlet-name>goodsServlet</servlet-name>
     <url-pattern>/goods.do</url-pattern>

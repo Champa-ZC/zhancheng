@@ -1,5 +1,7 @@
 package com.qianfeng.fxmall.goods.controller;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +10,13 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class BaseServlet extends HttpServlet {
+
+//    protected  static ClassPathXmlApplicationContext applicationContext;
+//
+//    static {
+//        System.out.println(">>>>>>>>初始化Spring容器>>>>>>>>>");
+//        applicationContext = new ClassPathXmlApplicationContext("spring.xml");
+//    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

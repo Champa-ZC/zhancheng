@@ -62,4 +62,9 @@
     <insert id="saveGoods" parameterType="com.qianfeng.fxmall.goods.bean.WxbGood">
         insert into wxb_good(<include refid="params"/>) values(<include refid="value"/>)
     </insert>
+
+    <select id="queryGoodsById" resultMap="baceResultMap">
+        select <include refid="params"/> from wxb_good where good_id = #{goodId}
+    </select>
+
 </mapper>

@@ -11,4 +11,6 @@ public interface IGoodsService {
     List<WxbGood> queryAllGoods();
 
     void saveGoods(WxbGood wxbGood);
+
+    WxbGood queryGoodsById(String goodId);
 }
