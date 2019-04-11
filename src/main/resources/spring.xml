@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com.qianfeng.fxmall.goods.service,com.qianfeng.fxmall.commons.mybatis,com.qianfeng.fxmall.goods.controller"/>
+    <context:component-scan base-package="com.qianfeng.fxmall.goods.service,com.qianfeng.fxmall.goods.controller"/>
     <mvc:annotation-driven/>
 
     <mvc:default-servlet-handler/>
@@ -17,7 +17,7 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSources"/>
-        <property name="mapperLocations" value="classpath:mapper/goods.mapper.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/*.mapper.xml"/>
     </bean>
     <bean id="dataSources" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
