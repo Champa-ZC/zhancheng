@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.fxmall.goods.mapper.MemberMapper">
+    
+    <resultMap id="baseResultMap" type="com.qianfeng.fxmall.goods.bean.WxbMemeber">
+        <id property="memeberId" column="memeber_id" javaType="java.lang.String"/>
+        <result property="qqNum" column="qq_num" javaType="java.lang.String"/>
+        <result property="recomUser" column="recom_user" javaType="java.lang.String"/>
+        <result property="registerTime" column="register_time" javaType="java.sql.Timestamp"/>
+        <result property="payAccount" column="pay_account" javaType="java.lang.String"/>
+        <result property="visitCode" column="visit_code" javaType="java.lang.String"/>
+        <result property="useRecom" column="use_recom" javaType="java.lang.Integer"/>
+        <result property="levelCode" column="level_code" javaType="java.lang.String"/>
+        <result property="updateTime" column="update_time" javaType="java.sql.Timestamp"/>
+    </resultMap>
+
+    <sql id="param">
+      memeber_id,account,qq_num,email,phone,recom_user,register_time,pay_account,name,password,
+      visit_code,use_recom,level_code,mid,update_time
+    </sql>
+    <select id="checkUsername" resultMap="baseResultMap">
+        select <include refid="param"/> from wxb_memeber where account = #{account};
+    </select>
+</mapper>
