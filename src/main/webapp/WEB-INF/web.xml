@@ -29,13 +29,36 @@
     <servlet-class>com.qianfeng.fxmall.goods.controller.GoodsServlet</servlet-class>
   </servlet>
 
-
   <!--<servlet-mapping>-->
     <!--<servlet-name>baseServlet</servlet-name>-->
     <!--<url-pattern>/base</url-pattern>-->
   <!--</servlet-mapping>-->
+
+  <servlet>
+    <servlet-name>spring</servlet-name>
+    <!--完成SPring容器的初始化的一个核心Servlet-->
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value></param-value>
+    </init-param>
+    <!--指定配置文件的名称和路径-->
+    <!--<init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:spring.xml</param-value>
+    </init-param>-->
+    <!--取值1-7，数字越小越先执行-->
+    <!--<load-on-startup>1</load-on-startup>-->
+  </servlet>
   <servlet-mapping>
     <servlet-name>goodsServlet</servlet-name>
     <url-pattern>/goods.do</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>spring</servlet-name>
+    <!--/ 不会匹配.jsp后缀-->
+    <!--/* 匹配所有-->
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
 </web-app>
